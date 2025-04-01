@@ -1,0 +1,21 @@
+---
+PeriodicTasks:
+  - name: run backup
+    start: 5:55
+    command: echo "run backup.sh"
+    repeat: 5
+    frequency: minutely
+
+  - name: fetch data from z
+    repeat: 10
+    frequency: secondly
+    command: ls -altr
+    workingdir: "./"
+
+  - name: rotate logs
+    repeat: 12hrs
+    command: logrotate -f r.config  --state r.status
+
+
+# frequency values
+# "secondly" / "minutely" / "hourly" / "daily" / "weekly" / "monthly" / "yearly"
